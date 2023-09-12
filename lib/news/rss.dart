@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:atk/model/parse.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:webfeed/webfeed.dart';
-import 'card.dart';
+import 'package:atk/model//model.dart';
+import '../../video/card.dart';
+import 'newsPage.dart';
 
 class NewsModel {
   final String title;
@@ -14,7 +17,7 @@ class NewsModel {
   NewsModel({required this.title, required this.description, required this.image});
 }
 
- String capitalize(String str){
+String capitalize(String str){
   return "${str[0].toUpperCase()}${str.substring(1)}";
 }
 
@@ -37,7 +40,7 @@ class rssLent extends StatelessWidget {
             alignment: AlignmentDirectional(0.00, 0.00),
             child: Text(
               'Первый туристический',
-             // textAlign: TextAlign.center,
+              // textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: GoogleFonts.montserrat().fontFamily,
                   color: Colors.white,
@@ -58,12 +61,16 @@ class rssLent extends StatelessWidget {
                 final _news = snap.data;
                 return ListView.separated(
                   itemBuilder: (context, i) {
-                    final NewsModel _item = _news[i];
-                    return GestureDetector(
-                      onTap: (){
-                        print(_item.image);
-                      },
-                      child: cardList(title: _item.title, discription: capitalize(_item.description.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('/', '')), image: '')
+                    final Model _item = _news[i];
+                    return InkWell(
+                        onTap: (){
+                          print('tap)');
+                          Navigator.push(
+                              context,
+                          MaterialPageRoute(builder: (context) =>  page(title: _item.title, image: _item.image, content: _item.content))
+                          );
+                        },
+                        child: cardList(title: _item.title, discription: capitalize(_item.description.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('/', '')), image: _item.image)
                     );},
                   separatorBuilder: (context, i) => Divider(),
                   itemCount: _news.length,
@@ -92,10 +99,11 @@ class rssLent extends StatelessWidget {
       var _decoded = RssFeed.parse(_response.body);
 
       return _decoded.items!
-          .map((item) => NewsModel(
-        title: item.title ?? 'Exeption',
-        description: item.description ?? '',
-        image: item.enclosure?.url ?? ''
+          .map((item) => Model(
+          title: item.title ?? 'Exeption',
+          description: item.description!.split('</p>')[0].replaceAll('<', '').replaceAll('>', '').replaceAll('p', '') ?? '',
+          image:  parsedData.getImage(item.content!.value),
+          content: parsedData.getContent(item.content!.value!.split('<p>'))
       ))
           .toList();
 

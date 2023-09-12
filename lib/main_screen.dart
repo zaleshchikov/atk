@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'rss.dart';
-import 'video_screen.dart';
+import 'package:atk/news/rss.dart';
+import 'video/video_screen.dart';
 
 
 

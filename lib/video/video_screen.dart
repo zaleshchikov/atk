@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'flisk.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/services.dart';
 class VideoPlayerTV extends StatefulWidget {
   const VideoPlayerTV({Key? key}) : super(key: key);
@@ -18,9 +16,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
 
   void pushFullScreenVideo() {
 
-//This will help to hide the status bar and bottom bar of Mobile
-//also helps you to set preferred device orientations like landscape
-
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     SystemChrome.setPreferredOrientations(
@@ -31,8 +26,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
         DeviceOrientation.landscapeRight,
       ],
     );
-
-//This will help you to push fullscreen view of video player on top of current page
 
     Navigator.of(context)
         .push(
@@ -71,20 +64,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
         },
       ),
     );
-        /*.then(
-          (value) {
-
-//This will help you to set previous Device orientations of screen so App will continue for portrait mode
-
-        SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-        SystemChrome.setPreferredOrientations(
-          [
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ],
-        );
-      },
-    );*/
   }
 
 
@@ -92,7 +71,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(videoUrl);
-
     controller.addListener(() {
       setState(() {});
     });
@@ -103,7 +81,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
 
   @override
   void dispose() {
-    //controller.dispose();
     super.dispose();
   }
 
@@ -176,19 +153,14 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
                         FloatingActionButton(
                           backgroundColor: Colors.amberAccent,
                           onPressed: () {
-                            // Wrap the play or pause in a call to `setState`. This ensures the
-                            // correct icon is shown.
                             setState(() {
-                              // If the video is playing, pause it.
                               if (controller.value.isPlaying) {
                                 controller.pause();
                               } else {
-                                // If the video is paused, play it.
                                 controller.play();
                               }
                             });
                           },
-                          // Display the correct icon depending on the state of the player.
                           child: Icon(
                             controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
                           ),
@@ -201,7 +173,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
                           onPressed: () {
                             pushFullScreenVideo();
                           },
-                          // Display the correct icon depending on the state of the player.
                           child: Icon(
                              Icons.fullscreen,
                           ),
