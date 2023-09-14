@@ -26,70 +26,63 @@ class rssLent extends StatelessWidget {
   static String rssUrl = 'https://1tourtv.online/category/news/feed/';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color(0xFFFFE286),
+    return  Scaffold(
+        backgroundColor: Color(0xfffff1da),
         appBar: AppBar(
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
           ),
 
-          backgroundColor: Color(0xFFEFD639),
-          automaticallyImplyLeading: true,
-          title: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
-            child: Text(
+          backgroundColor: Theme.of(context).primaryColor,
+          title:
+              Text(
               'Первый туристический',
               // textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: GoogleFonts.montserrat().fontFamily,
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700
-              ),
-            ),
-          ),
-          centerTitle: true,
+              style: Theme.of(context).textTheme.titleLarge),
           elevation: 2,
         ),
         body: Container(
 
-          child: FutureBuilder(
-            future: fetchNews(),
-            builder: (context, snap) {
-              if (snap.hasData) {
-                final _news = snap.data;
-                return ListView.separated(
-                  itemBuilder: (context, i) {
-                    final Model _item = _news[i];
-                    return InkWell(
-                        onTap: (){
-                          print('tap)');
-                          Navigator.push(
-                              context,
-                          MaterialPageRoute(builder: (context) =>  page(title: _item.title, image: _item.image, content: _item.content))
-                          );
-                        },
-                        child: cardList(title: _item.title, discription: capitalize(_item.description.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('/', '')), image: _item.image)
-                    );},
-                  separatorBuilder: (context, i) => Divider(),
-                  itemCount: _news.length,
-                );
-              } else if (snap.hasError) {
-                return Center(
-                  child: Text(snap.error.toString()),
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                );
-              }
-            },
-          ),
+          child:
+           FutureBuilder(
+              future: fetchNews(),
+              builder: (context, snap) {
+                if (snap.hasData) {
+                  final _news = snap.data;
+                  return ListView.separated(
+                    itemBuilder: (context, i) {
+                      final Model _item = _news[i];
+                      return InkWell(
+                          onTap: (){
+                            print('tap)');
+                            Navigator.push(
+                                context,
+                            MaterialPageRoute(builder: (context) =>  page(title: _item.title, image: _item.image, content: _item.content))
+                            );
+                          },
+                          child: cardList(title: _item.title, discription: capitalize(_item.description.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('/', '')), image: _item.image)
+                      );},
+                    separatorBuilder: (context, i) => Divider(
+                      color: Color(0xfffff1da),
+                    ),
+                    itemCount: _news.length,
+                  );
+                } else if (snap.hasError) {
+                  return Center(
+                    child: Text(snap.error.toString()),
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xff403100),
+                    ),
+                  );
+                }
+              },
+            ),
+
         ),
-      ),
+
     );
   }
   Future fetchNews() async {

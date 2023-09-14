@@ -9,14 +9,12 @@ class cardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Card(
-        color: Colors.amberAccent[100],
-        // Define the shape of the card
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        // Define how the card's content should be clipped
+    return  Card(
+        color: Theme.of(context).primaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side:  BorderSide(color: Color(0xff403100), width: 2,),
+      ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         // Define the child widget of the card
         child: Column(
@@ -57,13 +55,13 @@ class cardList extends StatelessWidget {
                         // Add some spacing between the subtitle and the text
                         Container(height: 10),
                         // Add a text widget to display some text
-                        Text(
+                        /*Text(
                           discription,
                           maxLines: 2,
                           style: TextStyle(
                             color: Colors.grey[700],
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -72,7 +70,7 @@ class cardList extends StatelessWidget {
             ),
           ],
         ),
-      ),
+
     );
   }
 }
