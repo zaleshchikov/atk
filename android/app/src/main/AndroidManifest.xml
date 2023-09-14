@@ -2,7 +2,7 @@
 
     <application
 
-        android:label="atk"
+        android:label="Первый Туристический"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
