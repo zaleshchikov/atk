@@ -30,11 +30,12 @@ class MyApp extends StatelessWidget {
 
           // Define the default brightness and colors.
           colorScheme: ColorScheme.fromSeed(
-            primary: Color(0xffFEF0CA),
-            seedColor: Color(0xffFEF0CA),
-            secondary: Color(0xffA4935F),
-            tertiary: Color(0xffE6C94F),
+            background: Color(0xfffefae0),
+            seedColor: Color(0xfffefae0),
             outline: Color(0xff403100),
+            onPrimaryContainer: Color(0xfffefae0),
+              primary: Color(0xfffefae0),
+              tertiary: Color(0xffccc1a5)
           ),
 
           // Define the default `TextTheme`. Use this to specify the default
@@ -48,8 +49,10 @@ class MyApp extends StatelessWidget {
             titleLarge: GoogleFonts.ubuntu(
               fontWeight: FontWeight.w800
             ),
-            bodyMedium: GoogleFonts.ubuntu(
-                fontSize: 18,
+            titleMedium: GoogleFonts.ubuntu(
+                fontWeight: FontWeight.w400
+            ),
+            bodyLarge: GoogleFonts.ubuntu(
                 //fontWeight: FontWeight.w700,
                 color: Color(0xff403100)
             ),
@@ -59,7 +62,7 @@ class MyApp extends StatelessWidget {
 
         title: 'Flutter Demo',
 
-      home:  rssLent(),
+      home:  twoButtonScreen(),
     ));
   }
 }

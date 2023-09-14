@@ -14,26 +14,21 @@ class page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          backgroundColor: Color(0xFFFFE286),
+    ThemeData theme = Theme.of(context);
+    return  Scaffold(
+          backgroundColor: theme.colorScheme.background,
           appBar: AppBar(
         leading: BackButton(
           onPressed: () => Navigator.pop(context, false),
         ),
 
-        backgroundColor: Color(0xFFEFD639),
+        backgroundColor: theme.colorScheme.primary,
         automaticallyImplyLeading: true,
         title:
           Text(
             title,
             // textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: GoogleFonts.montserrat().fontFamily,
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w700
-            ),
+            style: Theme.of(context).textTheme.titleLarge
 
         ),
         centerTitle: true,
@@ -42,40 +37,37 @@ class page extends StatelessWidget {
       body: Padding(
         padding:  EdgeInsets.all(MediaQuery.of(context).size.width*0.01),
         child: SingleChildScrollView(
-                child: Column(
-                    children: [
-                      InkWell(
-                        onTap: (){
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                      children: [
+                        InkWell(
+                          onTap: (){
 
-                        },
-                        child: Image.network(
-                          "$image",
-                          fit: BoxFit.cover,
+                          },
+                          child: Image.network(
+                            "$image",
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height*0.05,
-                      ),
-                      InkWell(
-                        onTap: (){
-
-                        },
-                      child:Text(
-                        content,
-                        textAlign: TextAlign.center,
-                        // textAlign: TextAlign.center,
-                        style: TextStyle(
-
-                            fontFamily: GoogleFonts.montserrat().fontFamily,
-                            color: Colors.grey[900],
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700
+                        Container(
+                          height: MediaQuery.of(context).size.height*0.05,
                         ),
+                        InkWell(
+                          onTap: (){
 
-                      )),
+                          },
+                        child:Text(
+                          content,
+                          textAlign: TextAlign.left,
+                          // textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyLarge
+
+                        )),
           ],
-        )),
-      ))
+        ),
+                )),
+      )
     );
   }
 }

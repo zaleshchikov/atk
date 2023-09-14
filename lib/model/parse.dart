@@ -11,7 +11,7 @@ class parsedData{
     var index = items[0].length == 0? 2 : 1;
 
     for (String s in items.sublist(index, items.length-1)){
-      content += s.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('br', '').replaceAll('/', '').replaceAll('\\', '').replaceAll('\n', '').replaceAll('&nbs;', '');
+      content += s.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('br', '').replaceAll('/', '').replaceAll('\\', '').replaceAll('\n', '').replaceAll('&nbs;', '').replaceAll('&#8220;', '"').replaceAll('&#8221;', '"');
       content += '\n\n';
     }
     return content;

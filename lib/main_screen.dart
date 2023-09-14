@@ -10,22 +10,18 @@ class twoButtonScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Scaffold(
-        backgroundColor: Color(0xFFFFE286),
+        backgroundColor: theme.colorScheme.background,
         appBar: AppBar(
-          backgroundColor: Color(0xFFEFD639),
+          backgroundColor: theme.colorScheme.primary,
           automaticallyImplyLeading: false,
           title: Align(
             alignment: AlignmentDirectional(0.00, 0.00),
             child: Text(
               'Первый туристический',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: GoogleFonts.montserrat().fontFamily,
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w700
-              ),
+              style: Theme.of(context).textTheme.titleLarge
             ),
           ),
           centerTitle: true,
@@ -47,7 +43,7 @@ class twoButtonScreen extends StatelessWidget {
 
                 },
                 elevation: 2.0,
-                fillColor: Color(0xFFAE7009),
+                fillColor: theme.colorScheme.tertiary,
                 child:
                 Container(
                     height: 120,
@@ -55,12 +51,7 @@ class twoButtonScreen extends StatelessWidget {
                         child: Text(
                           "Эфир",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: GoogleFonts.montserrat().fontFamily,
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700
-                          ),
+                          style: theme.textTheme.titleLarge
                         ))),
                 padding: EdgeInsets.all(15.0),
                 shape: CircleBorder(),
@@ -68,7 +59,7 @@ class twoButtonScreen extends StatelessWidget {
 
               Divider(
                 thickness: 10,
-                color: Color(0xFFAE7009),
+                color: theme.colorScheme.tertiary,
               ),
         RawMaterialButton(
           onPressed: () {
@@ -79,7 +70,7 @@ class twoButtonScreen extends StatelessWidget {
 
           },
           elevation: 2.0,
-          fillColor: Color(0xFFAE7009),
+          fillColor: theme.colorScheme.tertiary,
           child:
           Container(
             height: 120,
@@ -87,12 +78,7 @@ class twoButtonScreen extends StatelessWidget {
                 child: Text(
             "Новости",
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: GoogleFonts.montserrat().fontFamily,
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.w700
-            ),
+            style: theme.textTheme.titleLarge
           ))),
           padding: EdgeInsets.all(15.0),
           shape: CircleBorder(),

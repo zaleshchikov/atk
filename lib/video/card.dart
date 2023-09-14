@@ -9,11 +9,14 @@ class cardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return  Card(
-        color: Theme.of(context).primaryColor,
+        color: theme.colorScheme.onPrimaryContainer,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side:  BorderSide(color: Color(0xff403100), width: 2,),
+        side:  BorderSide(
+          color: theme.colorScheme.outline,
+          width: 2,),
       ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         // Define the child widget of the card
@@ -45,9 +48,7 @@ class cardList extends StatelessWidget {
                         // Add a title widget
                         Text(
                           title,
-                          style: TextStyle(
-                          color: Colors.grey[800],
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium
                         ),
                         // Add some spacing between the title and the subtitle
                         // Add a subtitle widget

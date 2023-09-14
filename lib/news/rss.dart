@@ -26,14 +26,15 @@ class rssLent extends StatelessWidget {
   static String rssUrl = 'https://1tourtv.online/category/news/feed/';
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return  Scaffold(
-        backgroundColor: Color(0xfffff1da),
+        backgroundColor: theme.colorScheme.background,
         appBar: AppBar(
           leading: BackButton(
             onPressed: () => Navigator.pop(context, false),
           ),
 
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: theme.colorScheme.primary,
           title:
               Text(
               'Первый туристический',
@@ -63,7 +64,7 @@ class rssLent extends StatelessWidget {
                           child: cardList(title: _item.title, discription: capitalize(_item.description.replaceAll('<', '').replaceAll('>', '').replaceAll('p', '').replaceAll('/', '')), image: _item.image)
                       );},
                     separatorBuilder: (context, i) => Divider(
-                      color: Color(0xfffff1da),
+                      color: theme.colorScheme.background,
                     ),
                     itemCount: _news.length,
                   );
@@ -74,7 +75,7 @@ class rssLent extends StatelessWidget {
                 } else {
                   return Center(
                     child: CircularProgressIndicator(
-                      color: Color(0xff403100),
+                      color: theme.colorScheme.outline,
                     ),
                   );
                 }

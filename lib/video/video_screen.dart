@@ -87,37 +87,25 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
   @override
   Widget build(BuildContext context) {
 
-
+    ThemeData theme = Theme.of(context);
     return
-      MaterialApp(
-          home: Scaffold(
-              backgroundColor: Color(0xFFFFE286),
+
+
+       Scaffold(
+              backgroundColor: theme.colorScheme.background,
               appBar: AppBar(
                 leading: BackButton(
-                  onPressed: () {
-                    controller.dispose();
-                    Navigator.pop(context, false);},
+                  onPressed: () => Navigator.pop(context, false),
                 ),
 
-                backgroundColor: Color(0xFFEFD639),
-                automaticallyImplyLeading: false,
-                title: Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Text(
+                backgroundColor: theme.colorScheme.primary,
+                title:
+                Text(
                     'Первый туристический',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.montserrat().fontFamily,
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700
-                    ),
-                  ),
-                ),
-                centerTitle: true,
+                    // textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleLarge),
                 elevation: 2,
-              ),
-              body:
+              ),    body:
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -151,7 +139,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FloatingActionButton(
-                          backgroundColor: Colors.amberAccent,
+                          backgroundColor: theme.colorScheme.tertiary,
                           onPressed: () {
                             setState(() {
                               if (controller.value.isPlaying) {
@@ -169,7 +157,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
                           width: MediaQuery.of(context).size.width*0.05,
                         ),
                         FloatingActionButton(
-                          backgroundColor: Colors.amberAccent,
+                          backgroundColor: theme.colorScheme.tertiary,
                           onPressed: () {
                             pushFullScreenVideo();
                           },
@@ -182,6 +170,6 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
 
                   ],
                 ),
-              )));
+              ));
   }
 }
