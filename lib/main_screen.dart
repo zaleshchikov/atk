@@ -12,7 +12,7 @@ class twoButtonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Scaffold(
-        backgroundColor: theme.colorScheme.background,
+        //backgroundColor: theme.colorScheme.background,
         appBar: AppBar(
           backgroundColor: theme.colorScheme.primary,
           automaticallyImplyLeading: false,
@@ -27,65 +27,72 @@ class twoButtonScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 2,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              RawMaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  VideoPlayerTV()),
-                  );
+        body: DecoratedBox(
 
-                },
-                elevation: 2.0,
-                fillColor: theme.colorScheme.tertiary,
-                child:
-                Container(
-                    height: 120,
-                    child: Center(
-                        child: Text(
-                          "Эфир",
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.titleLarge
-                        ))),
-                padding: EdgeInsets.all(15.0),
-                shape: CircleBorder(),
-              ),
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage("asset/back2.png"), fit: BoxFit.cover)),
 
-              Divider(
-                thickness: 10,
-                color: theme.colorScheme.tertiary,
-              ),
-        RawMaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => rssLent()),
-            );
+    child: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                RawMaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  VideoPlayerTV()),
+                    );
 
-          },
-          elevation: 2.0,
-          fillColor: theme.colorScheme.tertiary,
-          child:
-          Container(
-            height: 120,
-            child: Center(
-                child: Text(
-            "Новости",
-            textAlign: TextAlign.center,
-            style: theme.textTheme.titleLarge
-          ))),
-          padding: EdgeInsets.all(15.0),
-          shape: CircleBorder(),
-        )
+                  },
+                  elevation: 2.0,
+                  fillColor: theme.colorScheme.tertiary,
+                  child:
+                  Container(
+                      height: 120,
+                      child: Center(
+                          child: Text(
+                            "Эфир",
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.titleLarge
+                          ))),
+                  padding: EdgeInsets.all(15.0),
+                  shape: CircleBorder(),
+                ),
+
+                Divider(
+                  thickness: 10,
+                  color: theme.colorScheme.tertiary,
+                ),
+          RawMaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => rssLent()),
+              );
+
+            },
+            elevation: 2.0,
+            fillColor: theme.colorScheme.tertiary,
+            child:
+            Container(
+              height: 120,
+              child: Center(
+                  child: Text(
+              "Новости",
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleLarge
+            ))),
+            padding: EdgeInsets.all(15.0),
+            shape: CircleBorder(),
+          )
 ]
     ),
       ),
+        ),
     );
   }
 }

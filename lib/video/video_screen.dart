@@ -95,7 +95,12 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
               backgroundColor: theme.colorScheme.background,
               appBar: AppBar(
                 leading: BackButton(
-                  onPressed: () => Navigator.pop(context, false),
+                  onPressed: ()
+    {
+                    Navigator.pop(context, false);
+                    controller.dispose();
+
+                  },
                 ),
 
                 backgroundColor: theme.colorScheme.primary,
@@ -119,7 +124,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerTV> {
                   ],
                 ),
                       width: MediaQuery.of(context).size.width*0.6,
-                      height: MediaQuery.of(context).size.width*0.4,
+                      height: MediaQuery.of(context).size.width*0.35,
                       // height: MediaQuery.of(context).size.width*0.55,
                       child: InkWell(
                           onTap: () {

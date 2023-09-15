@@ -46,13 +46,13 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
             // ···
-            titleLarge: GoogleFonts.ubuntu(
+            titleLarge: GoogleFonts.montserrat(
               fontWeight: FontWeight.w800
             ),
-            titleMedium: GoogleFonts.ubuntu(
+            titleMedium: GoogleFonts.montserrat(
                 fontWeight: FontWeight.w400
             ),
-            bodyLarge: GoogleFonts.ubuntu(
+            bodyLarge: GoogleFonts.montserrat(
                 //fontWeight: FontWeight.w700,
                 color: Color(0xff403100)
             ),
@@ -62,7 +62,8 @@ class MyApp extends StatelessWidget {
 
         title: 'Flutter Demo',
 
-      home:  twoButtonScreen(),
+      home:
+          twoButtonScreen(),
     ));
   }
 }
